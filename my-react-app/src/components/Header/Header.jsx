@@ -31,18 +31,12 @@ const Header = () => {
 
           {/* User Links */}
           <div className="flex items-center space-x-4 text-blue-600">
-            <button className="hidden md:inline text-blue-600">
-              Login / Register
-            </button>
-            <button>
-              <FaUser />
-            </button>
-            <button>
-              <FaHeart />
-            </button>
-            <button>
-              <FaShoppingCart />
-            </button>
+              <div >
+                  <a className="text-base" href="@">Login</a><span className="text-black">/</span><a href="">register</a>
+              </div>
+            <a href="#"> <FaUser /></a>
+            <a href="#"> <FaHeart /></a>
+            <a href="#"> <FaShoppingCart /></a>
           </div>
         </div>
       </div>
