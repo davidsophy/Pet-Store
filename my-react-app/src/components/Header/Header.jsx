@@ -19,13 +19,13 @@ const Header = () => {
 
         {/* Right side: search + user links */}
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <FaSearch className="text-gray-500" aria-hidden="true" />
+          <div className="flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-lg">
+            <FaSearch className="text-gray-500" />
             <input
               type="text"
               placeholder="Search for pets"
-              aria-label="Search"
-              className="border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              aria-label="Search for pets"
+              className="bg-gray-100 outline-none text-sm"
             />
           </div>
 
