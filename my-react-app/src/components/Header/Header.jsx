@@ -45,7 +45,7 @@ const Header = () => {
             </div>:false}
             {pettoken? <div>
               <Link
-                to="/dashboard"
+                to="/DashboardView"
                 className="text-base btn hvr-underline-from-left py-1">
                 Dashboard
               </Link>
