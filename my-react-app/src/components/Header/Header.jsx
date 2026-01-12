@@ -1,6 +1,9 @@
 import React from "react";
-import "../Header/Header.css"
+import { Link } from "react-router-dom";
+import "../Header/Header.css";
 const Header = () => {
+  const pettoken=localStorage.getItem("tokenPet")
+  
   return (
     <header className="bg-white shadow-md">
       <div className="w-full flex items-center justify-between py-4 px-20">
@@ -29,22 +32,35 @@ const Header = () => {
 
           {/* User Links */}
           <div className="flex items-center space-x-4 text-blue-600">
-            <div>
-              <a className="text-base btn hvr-underline-from-left  py-1" href="@">
+            { !pettoken? <div>
+              <Link
+                to="/signIn"
+                className="text-base btn hvr-underline-from-left py-1">
                 Login
-              </a>
+              </Link>
               <span className="mx-3">/</span>
-              <a className="hvr-underline-from-left btn py-1" href="">register</a>
-            </div>
+              <Link to="/Register" className="hvr-underline-from-left btn py-1">
+                register
+              </Link>
+            </div>:false}
+            {pettoken? <div>
+              <Link
+                to="/DashboardView"
+                className="text-base btn hvr-underline-from-left py-1">
+                Dashboard
+              </Link>
+            </div>:false}
             <div className="flex items-center h-auto">
               <a href="#">
-                <i class="bi bi-person-fill text-3xl"></i>
+                <i className="bi bi-person-fill text-3xl"></i>
               </a>
               <a href="#">
-                <i class="bi bi-heart-fill text-2xl mx-5"></i>
+                <i className="bi bi-heart-fill text-2xl mx-5"></i>
               </a>
               <a href="#">
-                <i style={{ fontSize: "27px" }} class="bi bi-cart-fill "></i>
+                <i
+                  style={{ fontSize: "27px" }}
+                  className="bi bi-cart-fill "></i>
               </a>
             </div>
           </div>
@@ -63,12 +79,14 @@ const Header = () => {
                 </a>
               </li>
               <li className="relative group">
-                <a href="#" className="py-3 hvr-underline-from-left navbar-link font-extrabold block px-5 hover:text-blue-600">
+                <a
+                  href="#"
+                  className="py-3 hvr-underline-from-left navbar-link font-extrabold block px-5 hover:text-blue-600">
                   Shop <i className="bi bi-caret-down-fill ms-1"></i>
                 </a>
 
                 <ul
-                  className="
+                  className="z-1000
       absolute left-0 mt-2 bg-white shadow-lg border rounded-md w-48 pb-2
       opacity-0 invisible
       transform origin-top scale-y-0
@@ -259,24 +277,30 @@ const Header = () => {
               </li>
 
               <li>
-                <a className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600" href="#">
+                <a
+                  className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600"
+                  href="#">
                   Services
                 </a>
               </li>
               <li>
-                <a className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600" href="#">
+                <a
+                  className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600"
+                  href="#">
                   About
                 </a>
               </li>
               <li>
-                <a className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600" href="#">
+                <a
+                  className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600"
+                  href="#">
                   Contact
                 </a>
               </li>
             </ul>
 
             <button className="md:hidden text-gray-700  py-3 hover:text-blue-600">
-              <i class="bi bi-list"></i>
+              <i className="bi bi-list"></i>
             </button>
           </div>
         </div>

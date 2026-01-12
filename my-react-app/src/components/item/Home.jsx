@@ -25,6 +25,83 @@ const slides = [
     bg: "bg-purple-200", // Soft Purple
   },
 ];
+const categories = [
+    {
+      name: 'Dog Food',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9,2V8H11V11H5C3.89,11 3,11.89 3,13V16H1V22H7V16H5V13H11V16H9V22H15V16H13V13H19V16H17V22H23V16H21V13A2,2 0 0,0 19,11H13V8H15V2H9Z" />
+        </svg>
+      ),
+      bgColor: 'bg-blue-50'
+    },
+    {
+      name: 'Cat Food',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+        </svg>
+      ),
+      bgColor: 'bg-purple-50'
+    },
+    {
+      name: 'Treats',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5.5,2C3.56,2 2,3.56 2,5.5C2,7.44 3.56,9 5.5,9C7.44,9 9,7.44 9,5.5C9,3.56 7.44,2 5.5,2M18.5,2C16.56,2 15,3.56 15,5.5C15,7.44 16.56,9 18.5,9C20.44,9 22,7.44 22,5.5C22,3.56 20.44,2 18.5,2M5.5,11C3.56,11 2,12.56 2,14.5C2,16.44 3.56,18 5.5,18C7.44,18 9,16.44 9,14.5C9,12.56 7.44,11 5.5,11M18.5,11C16.56,11 15,12.56 15,14.5C15,16.44 16.56,18 18.5,18C20.44,18 22,16.44 22,14.5C22,12.56 20.44,11 18.5,11M12,16C10.06,16 8.5,17.56 8.5,19.5C8.5,21.44 10.06,23 12,23C13.94,23 15.5,21.44 15.5,19.5C15.5,17.56 13.94,16 12,16Z" />
+        </svg>
+      ),
+      bgColor: 'bg-yellow-50'
+    },
+    {
+      name: 'Trees & Scratchers',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V18H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z" />
+        </svg>
+      ),
+      bgColor: 'bg-green-50'
+    },
+    {
+      name: 'Toys',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+        </svg>
+      ),
+      bgColor: 'bg-pink-50'
+    },
+    {
+      name: 'Bowls & Dishes',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M2,15V17H22V15H2M4,19V21H20V19H4M2,11H22C22,9.9 21.1,9 20,9H16C16,7.9 15.1,7 14,7H10C8.9,7 8,7.9 8,9H4C2.9,9 2,9.9 2,11M4,13H20V11H4V13Z" />
+        </svg>
+      ),
+      bgColor: 'bg-orange-50'
+    },
+    {
+      name: 'Carriers',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18.5,4L19.66,8.35L18.7,8.61C18.25,7.74 17.79,6.87 17.26,6.43C16.73,6 16.11,6 15.5,6H13V16.5C13,17 13,17.5 13.33,17.75C13.67,18 14.33,18 15,18V19H9V18C9.67,18 10.33,18 10.67,17.75C11,17.5 11,17 11,16.5V6H8.5C7.89,6 7.27,6 6.74,6.43C6.21,6.87 5.75,7.74 5.3,8.61L4.34,8.35L5.5,4H18.5Z" />
+        </svg>
+      ),
+      bgColor: 'bg-indigo-50'
+    },
+    {
+      name: 'Litter & Litter Box',
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M5,5V19H19V5H5M7,7H17V9H7V7M7,11H17V13H7V11M7,15H17V17H7V15Z" />
+        </svg>
+      ),
+      bgColor: 'bg-gray-50'
+    }
+  ]
+const handleClick = (name) => {
+  console.log(`Clicked on ${name} category`);
+};
 
 function HeroSlider() {
   const [index, setIndex] = useState(0);
@@ -45,13 +122,11 @@ function HeroSlider() {
       <div className="w-full max-w-7xl px-6">
         {/* The Card - using slide.bg dynamically */}
         <div
-          className={`relative min-h-120 ${slide.bg} rounded-4xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between transition-colors duration-1000 ease-in-out overflow-hidden`}
-        >
+          className={`relative min-h-120 ${slide.bg} rounded-4xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between transition-colors duration-1000 ease-in-out overflow-hidden`}>
           {/* LEFT TEXT CONTENT */}
           <div
             key={index} // Key forces re-render for animation
-            className="z-10 max-w-lg space-y-4 animate-in fade-in slide-in-from-left-5 duration-700"
-          >
+            className="z-10 max-w-lg space-y-4 animate-in fade-in slide-in-from-left-5 duration-700">
             <p className="text-lg font-extrabold text-gray-700 uppercase tracking-wide">
               {slide.subtitle}
             </p>
@@ -61,7 +136,6 @@ function HeroSlider() {
             </h1>
 
             <p className="text-2xl text-gray-800 font-medium">{slide.desc}</p>
-             
 
             <button className="mt-4 bg-emerald-900 text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-lg">
               Shop Now →
@@ -108,6 +182,25 @@ const Home = () => {
      
       <HeroSlider />
       {/* Featured Section */}
+      <section className="top-category bg-gray-50 p-6">
+        <div className="container mx-auto px-4 py-8">
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">
+            Top Categories
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 gap-4">
+            {categories.map((category, index) => (
+              <div
+                key={index}
+                className={`${category.bgColor} rounded-lg p-4 flex flex-col items-center justify-center h-32 cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-105`}>
+                <div className="text-gray-700 mb-2">{category.icon}</div>
+                <p className="text-sm font-medium text-gray-800 text-center">
+                  {category.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="py-16 w-full flex flex-col items-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-950">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-6">
