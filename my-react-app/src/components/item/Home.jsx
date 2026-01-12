@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 
+
 const slides = [
   {
     subtitle: "Up to",
@@ -104,20 +105,20 @@ const Home = () => {
       {/* Header */}
       <Header />
 
-      {/* Hero Section */}
+     
       <HeroSlider />
       {/* Featured Section */}
       <section className="py-16 w-full flex flex-col items-center">
-        <h2 className="text-3xl font-bold mb-8">Featured Products</h2>
+        <h2 className="text-3xl font-bold mb-8 text-gray-950">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-6">
           {/* Product Card */}
-          <div className="bg-white rounded-lg shadow p-6 text-center">
+          <div className="bg-white rounded-l-xs shadow p-6 text-center">
             <img
-              src="https://via.placeholder.com/150"
+              src="/image/Dog/dog1.png"
               alt="Product 1"
               className="mx-auto mb-4"
             />
-            <h3 className="font-semibold mb-2">Dog Food</h3>
+            <h3 className="font-semibold mb-2 text-gray-950">Dog Food</h3>
             <p className="text-gray-600 mb-4">$25.00</p>
             <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
               Add to Cart
