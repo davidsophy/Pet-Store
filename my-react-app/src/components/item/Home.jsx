@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { LuDog ,LuCat, LuToyBrick, LuFish, LuBird, LuRabbit  } from "react-icons/lu";
-
+import { Link } from "react-router-dom";
 
 
 const slides = [
@@ -184,12 +184,12 @@ const Home = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold">New & Trending</h2>
-          <div className="w-16 h-1 bg-blue-500 mt-2 rounded"></div>
+          <h2 className="text-2xl text-black font-bold">New & Trending</h2>
+          <div className="w-45 h-1 bg-blue-500 mt-2 rounded"></div>
         </div>
-        <button className="text-blue-600 font-medium hover:underline">
+        <a href="" className="text-blue-600 font-medium hover:underline">
           View All →
-        </button>
+        </a>
       </div>
 
       {/* Product Card */}
@@ -220,9 +220,43 @@ const Home = () => {
           </h3>
 
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold">$18.99</span>
+            <span className="text-lg text-black font-bold">$18.99</span>
             <a href="" className="bg-blue-400 text-black px-5 py-2 rounded-lg font-extrabold text-1xl hover:bg-blue-500"><i class="bi bi-basket3"></i></a>
-            <a href="" className="bg-blue-600 text-black font-black hover:text-black px-4 py-2 rounded-lg text-sm hover:bg-blue-700">View Detail</a>
+          </div>
+        </div>
+      </div>
+
+      
+      {/* Product Card */}
+      <div className="w-[280px] bg-white rounded-2xl shadow-md overflow-hidden">
+        {/* Image */}
+        <div className="relative">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+            alt="Dog Food"
+            className="w-full h-64 object-cover"
+          />
+
+          {/* NEW badge */}
+          <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-md">
+            NEW
+          </span>
+
+          {/* Heart */}
+          <a href="absolute top-3 right-3 bg-white p-2 rounded-full shadow"><i class="bi bi-heart text-gray-400 hover:text-red-500"></i></a>
+         
+        </div>
+
+        {/* Content */}
+        <div className="p-4">
+          <p className="text-1xl font-bold text-gray-500 uppercase mb-1">Dog Food</p>
+          <h3 className="font-semibold text-lg mb-3 text-black">
+            Freshpet Digestive Turkey
+          </h3>
+
+          <div className="flex items-center justify-between">
+            <span className="text-lg text-black font-bold">$18.99</span>
+            <a href="" className="bg-blue-400 text-black px-5 py-2 rounded-lg font-extrabold text-1xl hover:bg-blue-500"><i class="bi bi-basket3"></i></a>
           </div>
         </div>
       </div>

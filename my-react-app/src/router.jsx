@@ -7,13 +7,21 @@ import DashboardView from "./view/DashboardView";
 import ViewdetailDash from "./components/Dashboard/ViewDetailDash";
 import TableView from "./components/Dashboard/TableView";
 import InsertStore from "./components/Dashboard/InsertStore";
-
+import Shop from "./pages/shop.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <AuthGuard>
         <App />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/shop",
+    element: (
+      <AuthGuard>
+        <Shop/>
       </AuthGuard>
     ),
   },
