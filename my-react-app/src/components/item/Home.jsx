@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
+import { LuDog ,LuCat, LuToyBrick, LuFish, LuBird, LuRabbit  } from "react-icons/lu";
+
 
 
 const slides = [
@@ -28,74 +30,51 @@ const slides = [
 const categories = [
     {
       name: 'Dog Food',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M9,2V8H11V11H5C3.89,11 3,11.89 3,13V16H1V22H7V16H5V13H11V16H9V22H15V16H13V13H19V16H17V22H23V16H21V13A2,2 0 0,0 19,11H13V8H15V2H9Z" />
-        </svg>
-      ),
+     icon: <LuDog className="w-8 h-8" />,
       bgColor: 'bg-blue-50'
     },
     {
       name: 'Cat Food',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
-        </svg>
-      ),
+      icon: <LuCat className="w-8 h-8"/>,
       bgColor: 'bg-purple-50'
     },
     {
-      name: 'Treats',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5.5,2C3.56,2 2,3.56 2,5.5C2,7.44 3.56,9 5.5,9C7.44,9 9,7.44 9,5.5C9,3.56 7.44,2 5.5,2M18.5,2C16.56,2 15,3.56 15,5.5C15,7.44 16.56,9 18.5,9C20.44,9 22,7.44 22,5.5C22,3.56 20.44,2 18.5,2M5.5,11C3.56,11 2,12.56 2,14.5C2,16.44 3.56,18 5.5,18C7.44,18 9,16.44 9,14.5C9,12.56 7.44,11 5.5,11M18.5,11C16.56,11 15,12.56 15,14.5C15,16.44 16.56,18 18.5,18C20.44,18 22,16.44 22,14.5C22,12.56 20.44,11 18.5,11M12,16C10.06,16 8.5,17.56 8.5,19.5C8.5,21.44 10.06,23 12,23C13.94,23 15.5,21.44 15.5,19.5C15.5,17.56 13.94,16 12,16Z" />
-        </svg>
-      ),
+      name: 'Toys',
+      icon:<LuToyBrick className="w-8 h-8"/> ,
       bgColor: 'bg-yellow-50'
     },
     {
-      name: 'Trees & Scratchers',
+      name: 'Healthcare',
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V18H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z" />
-        </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bandaid" viewBox="0 0 16 16">
+  <path d="M14.121 1.879a3 3 0 0 0-4.242 0L8.733 3.026l4.261 4.26 1.127-1.165a3 3 0 0 0 0-4.242M12.293 8 8.027 3.734 3.738 8.031 8 12.293zm-5.006 4.994L3.03 8.737 1.879 9.88a3 3 0 0 0 4.241 4.24l.006-.006 1.16-1.121ZM2.679 7.676l6.492-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492z"/>
+  <path d="M5.56 7.646a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708Zm1.415-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707M8.39 4.818a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707Zm0 5.657a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707ZM9.803 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707Zm1.414-1.414a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708ZM6.975 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707ZM8.39 7.646a.5.5 0 1 1-.708.708.5.5 0 0 1 .707-.708Zm1.413-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707"/>
+</svg>
       ),
       bgColor: 'bg-green-50'
     },
     {
-      name: 'Toys',
+      name: 'Assessories',
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
-        </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-sunglasses text-2xl" viewBox="0 0 16 16">
+  <path d="M3 5a2 2 0 0 0-2 2v.5H.5a.5.5 0 0 0 0 1H1V9a2 2 0 0 0 2 2h1a3 3 0 0 0 3-3 1 1 0 1 1 2 0 3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-.5h.5a.5.5 0 0 0 0-1H15V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-1.888 1.338A2 2 0 0 0 8 6a2 2 0 0 0-1.112.338A2 2 0 0 0 5 5zm0 1h.941c.264 0 .348.356.112.474l-.457.228a2 2 0 0 0-.894.894l-.228.457C2.356 8.289 2 8.205 2 7.94V7a1 1 0 0 1 1-1"/>
+</svg>
       ),
       bgColor: 'bg-pink-50'
     },
     {
-      name: 'Bowls & Dishes',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M2,15V17H22V15H2M4,19V21H20V19H4M2,11H22C22,9.9 21.1,9 20,9H16C16,7.9 15.1,7 14,7H10C8.9,7 8,7.9 8,9H4C2.9,9 2,9.9 2,11M4,13H20V11H4V13Z" />
-        </svg>
-      ),
+      name: 'Fish Food',
+      icon:<LuFish className="w-8 h-8"/> ,
       bgColor: 'bg-orange-50'
     },
     {
-      name: 'Carriers',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M18.5,4L19.66,8.35L18.7,8.61C18.25,7.74 17.79,6.87 17.26,6.43C16.73,6 16.11,6 15.5,6H13V16.5C13,17 13,17.5 13.33,17.75C13.67,18 14.33,18 15,18V19H9V18C9.67,18 10.33,18 10.67,17.75C11,17.5 11,17 11,16.5V6H8.5C7.89,6 7.27,6 6.74,6.43C6.21,6.87 5.75,7.74 5.3,8.61L4.34,8.35L5.5,4H18.5Z" />
-        </svg>
-      ),
+      name: 'Bird Food',
+      icon: <LuBird className="w-8 h-8"/> ,
       bgColor: 'bg-indigo-50'
     },
     {
-      name: 'Litter & Litter Box',
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M5,5V19H19V5H5M7,7H17V9H7V7M7,11H17V13H7V11M7,15H17V17H7V15Z" />
-        </svg>
-      ),
+      name: 'Rabbit Food',
+      icon: <LuRabbit className="w-8 h-8"/> ,
       bgColor: 'bg-gray-50'
     }
   ]
@@ -201,50 +180,53 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 w-full flex flex-col items-center">
-        <h2 className="text-3xl font-bold mb-8 text-gray-950">Featured Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-6">
-          {/* Product Card */}
-          <div className="bg-white rounded-l-xs shadow p-6 text-center">
-            <img
-              src="/image/Dog/dog1.png"
-              alt="Product 1"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2 text-gray-950">Dog Food</h3>
-            <p className="text-gray-600 mb-4">$25.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </div>
+    <section className="max-w-7xl mx-auto px-6 py-10">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-bold">New & Trending</h2>
+          <div className="w-16 h-1 bg-blue-500 mt-2 rounded"></div>
+        </div>
+        <button className="text-blue-600 font-medium hover:underline">
+          View All →
+        </button>
+      </div>
 
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product 2"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2">Cat Toy</h3>
-            <p className="text-gray-600 mb-4">$12.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </div>
+      {/* Product Card */}
+      <div className="w-[280px] bg-white rounded-2xl shadow-md overflow-hidden">
+        {/* Image */}
+        <div className="relative">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+            alt="Dog Food"
+            className="w-full h-64 object-cover"
+          />
 
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product 3"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2">Bird Cage</h3>
-            <p className="text-gray-600 mb-4">$50.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
+          {/* NEW badge */}
+          <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-md">
+            NEW
+          </span>
+
+          {/* Heart */}
+          <a href="absolute top-3 right-3 bg-white p-2 rounded-full shadow"><i class="bi bi-heart text-gray-400 hover:text-red-500"></i></a>
+         
+        </div>
+
+        {/* Content */}
+        <div className="p-4">
+          <p className="text-1xl font-bold text-gray-500 uppercase mb-1">Dog Food</p>
+          <h3 className="font-semibold text-lg mb-3 text-black">
+            Freshpet Digestive Turkey
+          </h3>
+
+          <div className="flex items-center justify-between">
+            <span className="text-lg font-bold">$18.99</span>
+            <a href="" className="bg-blue-400 text-black px-5 py-2 rounded-lg font-extrabold text-1xl hover:bg-blue-500"><i class="bi bi-basket3"></i></a>
+            <a href="" className="bg-blue-600 text-black font-black hover:text-black px-4 py-2 rounded-lg text-sm hover:bg-blue-700">View Detail</a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-6 mt-auto w-full text-center">
