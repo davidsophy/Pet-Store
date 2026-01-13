@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Header from "../Header/Header";
+import { getPetSupplies } from "../../store/suppliesStore.";
 
 const slides = [
   {
     subtitle: "Up to",
     title: "45% OFF",
     desc: "Thousands of pet favourites",
-    image: "/image/Dog/dog1.png",
+    image: "/image/download-Photoroom.png",
     bg: "bg-blue-200", // Soft Blue
   },
   {
     subtitle: "Special Offer",
     title: "30% OFF",
     desc: "Healthy food for your pets",
-    image: "/image/Dog/dog2.png",
+    image: "/image/download-Photoroom (1).png",
     bg: "bg-green-200", // Soft Green
   },
   {
     subtitle: "Limited Time",
     title: "Buy 1 Get 1",
     desc: "Toys & accessories",
-    image: "/image/Dog/dog3.png",
+    image: "/image/Kediler-Photoroom.png",
     bg: "bg-purple-200", // Soft Purple
   },
 ];
@@ -143,11 +143,11 @@ function HeroSlider() {
 
           {/* RIGHT IMAGE */}
           <div className="relative mt-8 md:mt-0 flex justify-center items-end">
-            <img
+            <img 
               key={slide.image}
               src={slide.image}
               alt="Pet Promotion"
-              className="w-full max-w-[350px] md:max-w-[450px] object-contain animate-in fade-in zoom-in-95 duration-700"
+              className="w-50 object-contain animate-in fade-in zoom-in-95 duration-700"
             />
           </div>
 
@@ -173,15 +173,29 @@ function HeroSlider() {
 }
 
 const Home = () => {
+    const [dogSupplies, setDogSupplies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDogSupplies = async () => {
+      const data = await getPetSupplies() || [];
+      const dogs = data.filter(item => item.category === "Dog").slice(0, 5);
+      setDogSupplies(dogs);
+      setLoading(false);
+    };
+    fetchDogSupplies();
+  }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
   return (
     <div className="w-full min-h-screen bg-gray-100 flex flex-col">
-      {/* Header */}
-      <Header />
 
       {/* Hero Section */}
       <HeroSlider />
       {/* Featured Section */}
-      <section className="top-category bg-gray-50 p-6">
+      <section className="top-category bg-gray- p-6">
         <div className="container mx-auto px-4 py-8">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">
             Top Categories
@@ -200,55 +214,68 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 w-full flex flex-col items-center">
-        <h2 className="text-3xl font-bold mb-8">Featured Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-6">
-          {/* Product Card */}
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product 1"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2">Dog Food</h3>
-            <p className="text-gray-600 mb-4">$25.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </div>
+             <section className="detial-supplies">
+          <div className="w-full bg-gray-100 p-6">
+            <h1 className="text-3xl text-center my-8 pb-8 font-bold text-gray-800">
+              Dog Supplies
+            </h1>
 
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product 2"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2">Cat Toy</h3>
-            <p className="text-gray-600 mb-4">$12.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {dogSupplies.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden relative 
+                       transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                  {/* Image */}
+                  <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                    />
 
-          <div className="bg-white rounded-lg shadow p-6 text-center">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product 3"
-              className="mx-auto mb-4"
-            />
-            <h3 className="font-semibold mb-2">Bird Cage</h3>
-            <p className="text-gray-600 mb-4">$50.00</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </section>
+                    {/* Favorite Heart */}
+                    <button className="absolute top-3 right-3 text-red-500 bg-white rounded-full p-2 shadow hover:scale-125 transition-transform duration-300">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                           2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                           C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5
+                           c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6 mt-auto w-full text-center">
-        <p>© 2026 Petzone. All rights reserved.</p>
-      </footer>
+                  {/* Content */}
+                  <div className="p-4 flex flex-col justify-between h-56">
+                    <div>
+                      <h2 className="text-lg font-semibold text-gray-800">
+                        {item.title}
+                      </h2>
+                      <p className="text-gray-600 mt-2 text-sm">
+                        {item.content}
+                      </p>
+                      <p className="text-xl font-bold text-indigo-600 mt-2">
+                        ${item.price}
+                      </p>
+                    </div>
+
+                    {/* Buy Button */}
+                    <button className="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
+                      Buy
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
     </div>
   );
 };

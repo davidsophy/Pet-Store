@@ -53,4 +53,33 @@ export const userStore = {
       return null;
     }
   },
+
+
+  
+ resetPassword: async (email, newPassword) => {
+    try {
+      const res = await fetch(
+        `https://vskxtvhciaoavdosxujo.supabase.co/rest/v1/register?email=eq.${email}`,
+        {
+          method: "PATCH",
+          headers: {
+            apikey: "sb_publishable_ob0ofkfPJrZF9BRZ5zrSIQ_gEiIsBF-",
+            Authorization: `Bearer sb_publishable_ob0ofkfPJrZF9BRZ5zrSIQ_gEiIsBF-`,
+            "Content-Type": "application/json",
+            Prefer: "return=representation",
+          },
+          body: JSON.stringify({ password: newPassword }),
+        }
+      );
+
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+      const data = await res.json();
+      return data; // Returns the updated user row
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      return null;
+    }
+  },
 };
+  

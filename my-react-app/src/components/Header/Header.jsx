@@ -72,11 +72,11 @@ const Header = () => {
           <div className="flex justify-center items-center py-3">
             <ul className="hidden md:flex space-x-25">
               <li>
-                <a
+                <Link to="/"
                   className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5 py-3 hover:text-blue-600"
                   href="#">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="relative group">
                 <a
@@ -284,18 +284,18 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a
+                <Link to="/about"
                   className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600"
                   href="#">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link to="/contact"
                   className="text-gray-700 hvr-underline-from-left navbar-link font-extrabold block px-5  py-3 hover:text-blue-600"
                   href="#">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
 
