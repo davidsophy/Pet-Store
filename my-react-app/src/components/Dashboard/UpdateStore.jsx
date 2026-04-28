@@ -1,23 +1,31 @@
-// InsertStore.jsx
-import React, { useState } from "react";
-import { insertPetSupply } from "../../store/suppliesStore.";
+// UpdateStore.jsx
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { updatePetSupply } from "../../store/suppliesStore.";
 
 const CATEGORY_TYPES = {
   Dog: ["Food", "Toys", "Accessories", "Health & Care"],
   Cat: ["Food", "Toys", "Litter & Hygiene", "Accessories"],
-  Bird: ["Food", "Cage", "Toys"],
-  Fish: ["Food", "Aquariums", "Filters & Pumps",],
-  "Small Pet": ["Food", "Cage", "Bedding", "Toys"],
+  Bird: ["Food", "Cages", "Toys"],
+  Fish: ["Food", "Aquariums", "Filters & Pumps"],
+  "Small Pet": ["Food", "Cages", "Bedding", "Toys"],
 };
 
-const InsertStore = () => {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Dog");
-  const [Type, setType] = useState("");   // lowercase ✔
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-  const [content, setContent] = useState("");
+const UpdateStore = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const item = location.state?.item; // item passed from TableView
+
+  const [title, setTitle] = useState(item?.title || "");
+  const [category, setCategory] = useState(item?.category || "Dog");
+  const [Type, setType] = useState(item?.Type || "");
+  const [price, setPrice] = useState(item?.price || "");
+  const [image, setImage] = useState(item?.image || "");
+  const [content, setContent] = useState(item?.content || "");
   const [loading, setLoading] = useState(false);
+
+  // get types for selected category
+  const typesForCategory = CATEGORY_TYPES[category];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,43 +37,42 @@ const InsertStore = () => {
 
     setLoading(true);
     try {
-      const result = await insertPetSupply({
+      const result = await updatePetSupply(item.id, {
         title,
         category,
-        Type,                // lowercase ✔
+        Type,
         price: Number(price),
         image,
         content,
       });
 
       if (result) {
-        alert("Pet/Supply inserted successfully!");
-        setTitle("");
-        setCategory("Dog");
-        setType("");
-        setPrice("");
-        setImage("");
-        setContent("");
+        alert("Pet/Supply updated successfully!");
+        navigate(-1); // go back to previous page
       }
     } catch (err) {
       console.error(err);
-      alert("Error inserting pet supply");
+      alert("Error updating pet supply");
     } finally {
       setLoading(false);
     }
   };
 
-  const typesForCategory = CATEGORY_TYPES[category];
+  // Reset Type if category changes
+  useEffect(() => {
+    if (!typesForCategory.includes(Type)) {
+      setType("");
+    }
+  }, [category]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-          Insert Pet/Supply
+          Update Pet/Supply
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6 text-gray-700">
-
           {/* Title */}
           <div>
             <label className="block mb-2 font-semibold text-gray-700">Title</label>
@@ -86,15 +93,17 @@ const InsertStore = () => {
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
-                setType(""); // reset when changing category
-              }}>
+              }}
+            >
               {Object.keys(CATEGORY_TYPES).map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
               ))}
             </select>
           </div>
 
-          {/* NEW: Type */}
+          {/* Type */}
           <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Type of {category}
@@ -102,10 +111,13 @@ const InsertStore = () => {
             <select
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400"
               value={Type}
-              onChange={(e) => setType(e.target.value)}>
+              onChange={(e) => setType(e.target.value)}
+            >
               <option value="">Select type</option>
               {typesForCategory.map((t) => (
-                <option key={t} value={t}>{t}</option>
+                <option key={t} value={t}>
+                  {t}
+                </option>
               ))}
             </select>
           </div>
@@ -153,8 +165,9 @@ const InsertStore = () => {
             className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all ${
               loading ? "opacity-50" : ""
             }`}
-            disabled={loading}>
-            {loading ? "Saving..." : "Insert"}
+            disabled={loading}
+          >
+            {loading ? "Updating..." : "Update"}
           </button>
         </form>
       </div>
@@ -162,4 +175,4 @@ const InsertStore = () => {
   );
 };
 
-export default InsertStore;
+export default UpdateStore;

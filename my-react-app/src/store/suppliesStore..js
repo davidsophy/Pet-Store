@@ -95,3 +95,49 @@ export async function deletePetSupply(id) {
     return false;
   }
 }
+
+
+
+export async function updatePetSupply(id, { title, category, price, image, content, Type }) {
+  try {
+    console.log("Updating payload:", {
+      id,
+      title,
+      category,
+      price,
+      image,
+      content,
+      Type,
+    });
+
+    const response = await fetch(`${SUPABASE_URL}?id=eq.${id}`, {
+      method: "PATCH",
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        "Content-Type": "application/json",
+        Prefer: "return=representation",
+      },
+      body: JSON.stringify({
+        title,
+        category,
+        price: Number(price),
+        image,
+        content,
+        Type,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log("Updated Pet Supply:", data);
+    return data;
+  } catch (error) {
+    console.error("Error updating pet supply:", error);
+    return null;
+  }
+}

@@ -24,10 +24,18 @@ const Sidebar = () => {
   const petSmallClick = () => {
     navigate("/DashboardView/tableview" ,{ state: { pet: "Small Pet" }});
     // localStorage.setItem("pet","Petsmall") // <-- use navigate()
-  };
+  };  
+
+  const logout=()=>{
+    localStorage.removeItem("tokenPet");
+    navigate("/")
+
+  }
 
   return (
-    <aside className="bg-blue-200 text-white min-h-screen w-100 duration-300 overflow-hidden">
+<aside className="bg-blue-200 text-white min-h-screen w-100 duration-300 overflow-hidden fixde">
+
+
       <div className="mx-auto logo-img p-8">
         <Link to="/">
           <img src="../image/logo.png" alt="Logo" />
@@ -98,7 +106,7 @@ const Sidebar = () => {
         </Link>
 
         {/* Logout */}
-        <button className="flex items-center bg-red-400 gap-3 p-2 hover:bg-red-800 rounded cursor-pointer mt-5 w-full text-left">
+        <button onClick={logout} className="flex items-center bg-red-400 gap-3 p-2 hover:bg-red-800 rounded cursor-pointer mt-5 w-full text-left">
           <i className="bi bi-box-arrow-right text-xl" />
           Logout
         </button>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { userStore } from "../../store/RegisterStore";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -84,10 +85,10 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center bg-white min-h-screen bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-xl p-8 w-full text-black max-w-md space-y-4">
+        className="bg-white shadow-md rounded-xl p-8 w-full text-black max-w-md space-y-4 ">
         <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
 
         {/* Username */}
@@ -148,6 +149,7 @@ export default function Signup() {
         {/* Success */}
         {success && (
           <div className="text-green-600 text-center mt-2">{success}</div>
+          
         )}
       </form>
     </div>
