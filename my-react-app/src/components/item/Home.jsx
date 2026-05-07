@@ -127,7 +127,7 @@ function HeroSlider() {
               key={slide.image}
               src={slide.image}
               alt="Pet Promotion"
-              className="w-full max-w-[350px] md:max-w-[450px] object-contain animate-in fade-in zoom-in-95 duration-700"
+              className="w-full max-w-87.5 md:max-w-112.5 object-contain animate-in fade-in zoom-in-95 duration-700"
             />
           </div>
 
@@ -193,7 +193,7 @@ const Home = () => {
       </div>
 
       {/* Product Card */}
-      <div className="w-[280px] bg-white rounded-2xl shadow-md overflow-hidden">
+      <div className="w-70 bg-white rounded-2xl shadow-md overflow-hidden">
         {/* Image */}
         <div className="relative">
           <img
@@ -228,7 +228,7 @@ const Home = () => {
 
       
       {/* Product Card */}
-      <div className="w-[280px] bg-white rounded-2xl shadow-md overflow-hidden">
+      <div className="w-70 bg-white rounded-2xl shadow-md overflow-hidden">
         {/* Image */}
         <div className="relative">
           <img
